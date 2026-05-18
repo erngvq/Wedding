@@ -110,7 +110,6 @@
       font-size:1.4rem;
       letter-spacing:4px;
       line-height:1.8;
-      margin-bottom:70px;
     }
 
     /* TABS */
@@ -310,6 +309,22 @@
       }
     }
 
+    .countdown-inline{
+      margin:0 0 50px;
+      font-size:1.5rem;
+      letter-spacing:2px;
+      opacity:0.9;
+      color:#f4f1ed;
+    }
+
+    @media (max-width:768px){
+
+      .countdown-inline{
+        font-size:1.1rem;
+        line-height:1.6;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -345,6 +360,10 @@
     <div class="info">
       AUGUST 21, 2026<br>
       HOTEL XCARET MEXICO
+    </div>
+
+    <div class="countdown-inline" id="countdown">
+      0d 0h 0min 0s
     </div>
 
     <!-- TABS -->
@@ -447,7 +466,7 @@
           <div class="attire">
             Vestimenta sugerida: Balance entre elegante costal y cómodo.<br>
             Tener en cuenta que la ceremonia es en la arena pero la recepción sería bajo techo.<br>
-            POR FAVOR NO USAR BLANCO O NEGRO.
+            POR FAVOR NO USAR BLANCO, NEGRO, O BEIGE.
           </div>
 
         </div>
@@ -575,7 +594,42 @@
       element.classList.add('active');
     }
 
-  </script>
+    // SIMPLE COUNTDOWN
+    const weddingDate = new Date("August 21, 2026 17:00:00").getTime();
 
+    function updateCountdown(){
+
+      const now = new Date().getTime();
+
+      const distance = weddingDate - now;
+
+      if(distance < 0){
+        document.getElementById("countdown").innerHTML =
+          "¡Hoy es el gran día! ✨";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+      );
+
+      const seconds = Math.floor(
+        (distance % (1000 * 60)) / 1000
+      );
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}min ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+  </script>
 </body>
 </html>
