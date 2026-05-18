@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L&E</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#151113;
+      color:#f4f1ed;
+      font-family:'Cormorant Garamond', serif;
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      padding:20px;
+      background:#151113;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-size:2rem;
+      letter-spacing:4px;
+      font-weight:300;
+    }
+
+    /* HERO */
+
+    .hero{
+      margin-top:85px;
+      width:100%;
+      height:75vh;
+      overflow:hidden;
+      background:#151113;
+    }
+
+    .hero img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center top;
+    }
+
+    /* MAIN SECTION */
+
+    .content{
+      text-align:center;
+      padding:70px 24px 90px;
+      background:#151113;
+    }
+
+    .small-title{
+      letter-spacing:8px;
+      font-size:1.1rem;
+      margin-bottom:10px;
+    }
+
+    .script{
+      font-family:'Great Vibes', cursive;
+      font-size:5rem;
+      line-height:1;
+      margin:10px 0 25px;
+      color:#ffffff;
+    }
+
+    .couple{
+      font-size:3rem;
+      letter-spacing:3px;
+      margin-bottom:20px;
+      line-height:1.1;
+    }
+
+    .divider{
+      width:180px;
+      height:1px;
+      background:#cfc7c2;
+      margin:35px auto;
+    }
+
+    .info{
+      font-size:1.4rem;
+      letter-spacing:4px;
+      line-height:1.8;
+      margin-bottom:70px;
+    }
+
+    /* TABS */
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:40px;
+      flex-wrap:wrap;
+    }
+
+    .tab-btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.2);
+      color:#f4f1ed;
+      padding:12px 22px;
+      cursor:pointer;
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.1rem;
+      letter-spacing:1px;
+      transition:0.3s ease;
+    }
+
+    .tab-btn:hover{
+      background:#f4f1ed;
+      color:#151113;
+    }
+
+    .tab-btn.active{
+      background:#f4f1ed;
+      color:#151113;
+    }
+
+    /* TAB CONTENT */
+
+    .tab-content{
+      max-width:750px;
+      margin:0 auto;
+      display:none;
+      animation:fade 0.4s ease;
+      text-align:left;
+    }
+
+    .tab-content.active{
+      display:block;
+    }
+
+    .tab-content h2{
+      text-align:center;
+      font-size:2.3rem;
+      margin-bottom:25px;
+      font-weight:400;
+      letter-spacing:2px;
+    }
+
+    .tab-content p{
+      font-size:1.2rem;
+      line-height:1.9;
+      opacity:0.92;
+      margin-bottom:20px;
+    }
+
+    .itinerary-note{
+      text-align:center;
+      font-style:italic;
+      opacity:0.75;
+      margin-bottom:40px;
+      font-size:1.1rem;
+    }
+
+    .schedule{
+      display:flex;
+      flex-direction:column;
+      gap:35px;
+    }
+
+    .schedule-day{
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      padding-bottom:30px;
+    }
+
+    .schedule-day h3{
+      font-size:2rem;
+      margin-bottom:10px;
+      font-weight:400;
+      letter-spacing:1px;
+    }
+
+    .schedule-day h4{
+      font-size:1.3rem;
+      margin-top:18px;
+      margin-bottom:5px;
+      font-weight:400;
+    }
+
+    .schedule-day span{
+      opacity:0.75;
+      font-size:1rem;
+      letter-spacing:1px;
+    }
+
+    .schedule-day p{
+      margin-top:10px;
+      margin-bottom:0;
+    }
+
+    .attire{
+      margin-top:15px;
+      padding:12px 16px;
+      background:rgba(255,255,255,0.05);
+      border-left:2px solid #f4f1ed;
+      font-size:1rem;
+      letter-spacing:1px;
+    }
+
+    .transport-box{
+      margin-top:30px;
+      padding:24px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .transport-box h3{
+      margin-bottom:15px;
+      font-size:1.8rem;
+      font-weight:400;
+      letter-spacing:1px;
+    }
+
+    .transport-box p{
+      margin-bottom:16px;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(10px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width:768px){
+
+      .logo{
+        font-size:1.7rem;
+      }
+
+      .hero{
+        height:70vh;
+      }
+
+      .script{
+        font-size:3.7rem;
+      }
+
+      .couple{
+        font-size:2.2rem;
+      }
+
+      .info{
+        font-size:1.1rem;
+      }
+
+      .content{
+        padding:60px 20px 80px;
+      }
+
+      .tabs{
+        gap:12px;
+      }
+
+      .tab-btn{
+        width:100%;
+      }
+
+      .tab-content h2{
+        font-size:2rem;
+      }
+
+      .tab-content p{
+        font-size:1.08rem;
+      }
+
+      .schedule-day h3{
+        font-size:1.7rem;
+      }
+
+      .transport-box{
+        padding:20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+
+  <nav class="navbar">
+    <div class="logo">L&amp;E</div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+
+  <section class="hero">
+    <img src="proposal.jpg" alt="Proposal">
+  </section>
+
+  <!-- MAIN CONTENT -->
+
+  <section class="content">
+
+    <div class="small-title">THE</div>
+
+    <div class="script">Wedding</div>
+
+    <div class="small-title">OF</div>
+
+    <h1 class="couple">
+      LAURENT &amp; ERNESTO
+    </h1>
+
+    <div class="divider"></div>
+
+    <div class="info">
+      AUGUST 21, 2026<br>
+      HOTEL XCARET MEXICO
+    </div>
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+      <button class="tab-btn active" onclick="showTab('historia', this)">
+        Nuestra Historia
+      </button>
+
+      <button class="tab-btn" onclick="showTab('itinerario', this)">
+        Itinerario
+      </button>
+
+      <button class="tab-btn" onclick="showTab('hotel', this)">
+        El Hotel
+      </button>
+
+      <button class="tab-btn" onclick="showTab('regalos', this)">
+        Regalos
+      </button>
+
+    </div>
+
+    <!-- NUESTRA HISTORIA -->
+
+    <div class="tab-content active" id="historia">
+
+      <h2>Nuestra Historia</h2>
+
+      <p>
+        Todo comenzó durante un proyecto de la universidad. En medio de conversaciones
+        y risas, él le dijo a quien hoy es su futura esposa que algún día ella
+        terminaría siendo su novia y ella respondió que en sus sueños.
+      </p>
+
+      <p>
+        Después de 9 años soñando y compartiendo viajes, risas,
+        aventuras y momentos especiales, estamos emocionados de celebrar
+        este nuevo capítulo junto a las personas que más queremos.
+      </p>
+
+    </div>
+
+    <!-- ITINERARIO -->
+
+    <div class="tab-content" id="itinerario">
+
+      <h2>Itinerario</h2>
+
+      <p class="itinerary-note">
+        Queremos que este fin de semana sea una celebración relajada y divertida
+        para todos. La mayoría de las actividades no son obligatorias, pero son
+        los planes que nosotros estaremos disfrutando y nos encantaría compartirlos
+        con ustedes.
+      </p>
+
+      <div class="schedule">
+
+        <!-- THURSDAY -->
+
+        <div class="schedule-day">
+
+          <h3>Jueves</h3>
+
+          <h4>Xplor Fuego</h4>
+
+          <span>5:00 PM</span>
+
+          <p>
+            Nuestra aventura comenzará en Xplor Fuego, una experiencia nocturna
+            llena de actividades, ríos subterráneos, tirolesas y mucha diversión.
+            Ese día también la comida sería dentro del parque (mesa buffet).
+          </p>
+
+          <div class="attire">
+            Vestimenta: No se requiere vestimenta específica.
+          </div>
+
+        </div>
+
+        <!-- FRIDAY -->
+
+        <div class="schedule-day">
+
+          <h3>Viernes</h3>
+
+          <h4>Ceremonia</h4>
+
+          <span>5:00 PM</span>
+
+          <h4>Cocktail Hour</h4>
+
+          <span>6:00 PM</span>
+
+          <h4>Recepción</h4>
+
+          <span>7:00 PM</span>
+
+          <div class="attire">
+            Vestimenta sugerida: Balance entre elegante costal y cómodo.<br>
+            Tener en cuenta que la ceremonia es en la arena pero la recepción sería bajo techo.<br>
+            POR FAVOR NO USAR BLANCO O NEGRO.
+          </div>
+
+        </div>
+
+        <!-- SATURDAY -->
+
+        <div class="schedule-day">
+
+          <h3>Sábado</h3>
+
+          <h4>Xenses</h4>
+
+          <span>Durante el día</span>
+
+          <p>
+            Planeamos comenzar el día desayunando juntos antes de visitar Xenses,
+            un parque lleno de experiencias sensoriales y diversión.
+          </p>
+
+          <h4>Cena en Las Cuevas</h4>
+
+          <span>Noche</span>
+
+          <p>
+            Cerraremos con una cena en el restaurante Las Cuevas (steakhouse).
+          </p>
+
+          <div class="attire">
+            Vestimenta sugerida para la cena: Blanco.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- HOTEL -->
+
+    <div class="tab-content" id="hotel">
+
+      <h2>El Hotel</h2>
+
+      <p>
+        Hotel Xcaret México ofrece una experiencia única rodeada de naturaleza,
+        arquitectura impresionante y vistas increíbles del Caribe Mexicano.
+      </p>
+
+      <p>
+        Hemos reservado habitaciones para nuestros invitados para disfrutar juntos
+        de un fin de semana inolvidable lleno de celebración, descanso y aventura.
+      </p>
+
+      <div class="transport-box">
+
+        <h3>Transportación Incluida</h3>
+
+        <p>
+          El hotel incluye transportación gratuita de ida y vuelta desde el
+          Aeropuerto Internacional de Cancún (CUN) hacia Hotel Xcaret México.
+        </p>
+
+        <p>
+          Después de recoger su equipaje y dirigirse al área de llegadas y transportación,
+          podrán encontrar al personal de Xcaret usando camisas rosas y sosteniendo
+          clipboards de Xcaret.
+        </p>
+
+        <p>
+          Será necesario presentar su pase de abordar con las fechas correspondientes,
+          ya que el servicio es exclusivamente entre el aeropuerto y el resort.
+        </p>
+
+        <p>
+          No es necesario reservar el shuttle con anticipación; pueden llegar
+          directamente con el representante de Xcaret en el aeropuerto. Sin embargo,
+          recomendamos compartir previamente los detalles de su vuelo con el hotel
+          para facilitar su llegada y permitir que el resort monitoree su itinerario.
+        </p>
+
+      </div>
+    
+    </div>
+
+    <!-- REGALOS -->
+
+    <div class="tab-content" id="regalos">
+
+      <h2>YA ESTABAS PREOCUPADO</h2>
+
+      <p>
+        Los novios no quieren regalos. El regalo es su participación en este día tan especial para nosotros.
+      </p>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    function showTab(tabId, element){
+
+      // hide all tabs
+
+      const tabs = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      // remove active from buttons
+
+      const buttons = document.querySelectorAll('.tab-btn');
+
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+
+      // show selected tab
+
+      document.getElementById(tabId).classList.add('active');
+
+      // activate button
+
+      element.classList.add('active');
+    }
+
+  </script>
+
+</body>
+</html>
